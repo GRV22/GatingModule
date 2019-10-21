@@ -1,0 +1,5 @@
+Functional requirements
+1. conditionalExpression should be able to support any infix expression
+2. Supported operators >, >=, <=, <, ==, !=, BETWEEN, ALLOF, NONEOF
+3. Datatypes supported numbers, string, boolean
+4. Module should be extensible to allow new attributes and new operators without major changes
