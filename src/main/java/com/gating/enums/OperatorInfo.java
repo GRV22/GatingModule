@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum OperatorInfo {
+    // Precedence give increaasing order
     Or("or", 10, 2),
     And("and", 20, 2),
     EqualsTo("==", 30, 2),
