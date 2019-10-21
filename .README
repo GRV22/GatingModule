@@ -3,3 +3,14 @@ Functional requirements
 2. Supported operators >, >=, <=, <, ==, !=, BETWEEN, ALLOF, NONEOF
 3. Datatypes supported numbers, string, boolean
 4. Module should be extensible to allow new attributes and new operators without major changes
+
+
+How to use Gating Validator:
+
+1. For allof , noneof operators values should be comma separated string
+    eg: visitedplaces allof mumbai,delhi,bangalore
+2. For "or" , "and" operators boolean values expected
+3. For lessThan, lessThanEqualsTo, greaterThan, greaterThanEqualsTo, Between operators integer values expected
+4. For equalsTo, notEqualsTo operator String and Integer and Boolean values supported
+5. You can use Round braces also "(" ")"
+6. All values , operators, attributes name, braces should be space separated.
