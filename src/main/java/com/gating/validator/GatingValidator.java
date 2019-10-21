@@ -7,11 +7,28 @@ import java.util.Map;
 
 public class GatingValidator {
 
-    private InfixHelper infixHelper = new InfixHelper();
-    private PostfixHelper postfixHelper = new PostfixHelper();
+    private InfixHelper infixHelper;
+    private PostfixHelper postfixHelper;
+
+    public GatingValidator() {
+        infixHelper = InfixHelper.getInstance();
+        postfixHelper = PostfixHelper.getInstance();
+    }
+
+    private void printInformationOnEnter(String feature, String infixExpresson, String postfixExpression) {
+        System.out.println("Inside Gating System ...");
+        System.out.println("Feature : " + feature);
+        System.out.println("Conditional Expression :");
+        System.out.println(infixExpresson);
+        System.out.println("Postfix Expression :");
+        System.out.println(postfixExpression);
+        System.out.println();
+    }
 
     public boolean isAllowed(String conditionalExperssion, String featureName, Map<String, Object> attributes) throws Exception {
-        return postfixHelper.evaluate(infixHelper.convertToPostfix(conditionalExperssion), attributes);
+        String postfix = infixHelper.convertToPostfix(conditionalExperssion);
+        printInformationOnEnter(featureName, conditionalExperssion, postfix);
+        return postfixHelper.evaluate(postfix, attributes);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.gating.helpers;
 
 import com.gating.operators.Operator;
-import com.gating.operators.OperatorInfo;
+import com.gating.enums.OperatorInfo;
 
 import java.util.*;
 
@@ -9,11 +9,21 @@ public class PostfixHelper {
 
     private final ElementHelper helper = ElementHelper.getInstance();
 
+    private PostfixHelper() {}
+
+    private static class SingletonHelper {
+        private static final PostfixHelper INSTANCE = new PostfixHelper();
+    }
+
+    public static PostfixHelper getInstance() {
+        return PostfixHelper.SingletonHelper.INSTANCE;
+    }
+
     public boolean evaluate(String postfixExpression, Map<String, Object> attributes) throws Exception {
         Stack<Object> stack = new Stack<Object>();
         String[] expressionElements = postfixExpression.split(" ");
         for (final String element : expressionElements) {
-            if (helper.isOperator(element)) {
+            if (OperatorInfo.isExist(element)) {
                 Operator operator = helper.getOperator(OperatorInfo.getByName(element.toLowerCase()));
                 int noOfOperands = operator.getNoOfOperands();
                 final List<Object> operands = new ArrayList<Object>();
@@ -21,7 +31,7 @@ public class PostfixHelper {
                     operands.add(stack.pop());
                 }
                 Collections.reverse(operands);
-                stack.push(operator.operate(operands));
+                stack.push(operator.apply(operands));
             } else {
                 if (null == attributes.get(element)) {
                     stack.push(helper.getElementValue(element));

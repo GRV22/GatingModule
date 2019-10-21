@@ -6,5 +6,5 @@ public interface Operator {
     int getPrecedenceOrder();
     int getNoOfOperands();
     String getOperatorIdentity();
-    <T> Boolean operate(List<T> operands) throws Exception;
+    <T> Boolean apply(List<T> operands) throws Exception;
 }

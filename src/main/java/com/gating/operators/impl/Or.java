@@ -1,4 +1,7 @@
-package com.gating.operators;
+package com.gating.operators.impl;
+
+import com.gating.enums.OperatorInfo;
+import com.gating.operators.AbstractOperator;
 
 import java.util.List;
 
@@ -8,7 +11,7 @@ public class Or extends AbstractOperator {
         super(OperatorInfo.Or);
     }
 
-    public <T> Boolean operate(List<T> operands) throws Exception {
+    public <T> Boolean apply(List<T> operands) throws Exception {
         validateOperands(operands);
         for (T operand : operands) {
             if (!(operand instanceof Boolean)) {

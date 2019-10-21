@@ -1,4 +1,7 @@
-package com.gating.operators;
+package com.gating.operators.impl;
+
+import com.gating.operators.AbstractOperator;
+import com.gating.enums.OperatorInfo;
 
 import java.util.List;
 
@@ -8,7 +11,7 @@ public class GreaterThanEqualsTo extends AbstractOperator {
         super(OperatorInfo.GreaterThanEqualsTo);
     }
 
-    public <T> Boolean operate(List<T> operands) throws Exception {
+    public <T> Boolean apply(List<T> operands) throws Exception {
         validateOperands(operands);
         for (T operand : operands) {
             if (!(operand instanceof Integer)) {

@@ -1,6 +1,6 @@
 package com.gating.helpers;
 
-import com.gating.operators.OperatorInfo;
+import com.gating.enums.OperatorInfo;
 
 public class PrecedenceHelper {
 
@@ -8,11 +8,7 @@ public class PrecedenceHelper {
         if (null == operator) {
             return -1;
         }
-        OperatorInfo operatorInfo = OperatorInfo.getByName(operator.toLowerCase());
-        if (null != operatorInfo) {
-            return operatorInfo.getPrecedenceOrder();
-        }
-        return -1;
+        return OperatorInfo.getPrecedence(operator.toLowerCase());
     }
 
 }

@@ -1,6 +1,8 @@
 package com.gating.helpers;
 
+import com.gating.enums.OperatorInfo;
 import com.gating.operators.*;
+import com.gating.operators.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,19 +11,23 @@ public class ElementHelper {
 
     private Map<OperatorInfo, Operator> operatorInfoOperatorMap;
 
+    private void addOperator(AbstractOperator operator) {
+        operatorInfoOperatorMap.put(operator.getOperatorInfo(), operator);
+    }
+
     private ElementHelper() {
         operatorInfoOperatorMap = new HashMap<OperatorInfo, Operator>();
-        operatorInfoOperatorMap.put(OperatorInfo.Or, new Or());
-        operatorInfoOperatorMap.put(OperatorInfo.And, new And());
-        operatorInfoOperatorMap.put(OperatorInfo.EqualsTo, new EqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.NotEqualsTo, new NotEqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.GreaterThanEqualsTo, new GreaterThanEqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.GreaterThan, new GreaterThan());
-        operatorInfoOperatorMap.put(OperatorInfo.LessThanEqualsTo, new LessThanEqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.LessThan, new LessThan());
-        operatorInfoOperatorMap.put(OperatorInfo.Between, new Between());
-        operatorInfoOperatorMap.put(OperatorInfo.AllOf, new AllOf());
-        operatorInfoOperatorMap.put(OperatorInfo.NoneOf, new NoneOf());
+        addOperator(new Or());
+        addOperator(new And());
+        addOperator(new EqualsTo());
+        addOperator(new NotEqualsTo());
+        addOperator(new GreaterThanEqualsTo());
+        addOperator(new GreaterThan());
+        addOperator(new LessThanEqualsTo());
+        addOperator(new LessThan());
+        addOperator(new Between());
+        addOperator(new AllOf());
+        addOperator(new NoneOf());
     }
 
     private static class SingletonHelper {
@@ -30,13 +36,6 @@ public class ElementHelper {
 
     public static ElementHelper getInstance() {
         return SingletonHelper.INSTANCE;
-    }
-
-    public boolean isOperator(final String element) {
-        if (null == element) {
-            return false;
-        }
-        return (null != OperatorInfo.getByName(element.toLowerCase()));
     }
 
     public Operator getOperator(final OperatorInfo opInfo) {

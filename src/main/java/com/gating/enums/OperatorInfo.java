@@ -1,4 +1,4 @@
-package com.gating.operators;
+package com.gating.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,4 +30,29 @@ public enum OperatorInfo {
         }
         return null;
     }
+
+    public static boolean isExist(String identity) {
+        for(final OperatorInfo operatorInfo: OperatorInfo.values()) {
+            if (operatorInfo.getIdentity().equals(identity.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static int getPrecedence(String identity) {
+        if (identity == null) {
+            return -1;
+        }
+        for(final OperatorInfo operatorInfo: OperatorInfo.values()) {
+            if (operatorInfo.getIdentity().equals(identity.toLowerCase())) {
+                return operatorInfo.getPrecedenceOrder();
+            }
+        }
+        return -1;
+    }
+
+
+
 }
