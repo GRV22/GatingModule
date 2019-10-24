@@ -10,12 +10,12 @@ public class LessThanEqualsTo extends AbstractOperator {
 
     private final BinaryOperatorTypeHandler handler;
 
-    public LessThanEqualsTo(BinaryOperatorTypeHandler handler) {
+    public LessThanEqualsTo(final BinaryOperatorTypeHandler handler) {
         super(OperatorInfo.LessThanEqualsTo);
         this.handler = handler;
     }
 
-    public <T> Boolean apply(List<T> operands) throws Exception {
+    public <T> Boolean apply(final List<T> operands) throws Exception {
         validateOperands(operands);
         return !handler.apply(operands.get(0), (String) operands.get(1));
     }

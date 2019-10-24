@@ -11,14 +11,14 @@ public class And extends AbstractOperator {
         super(OperatorInfo.And);
     }
 
-    public <T> Boolean apply(List<T> operands) throws Exception {
+    public <T> Boolean apply(final List<T> operands) throws Exception {
         validateOperands(operands);
-        for (T operand : operands) {
+        for (final T operand : operands) {
             if (!(operand instanceof Boolean)) {
                 throw new Exception("For AND Operation operands should be Boolean type");
             }
         }
-        for (T operand : operands) {
+        for (final T operand : operands) {
             if (!(Boolean) operand) {
                 return false;
             }

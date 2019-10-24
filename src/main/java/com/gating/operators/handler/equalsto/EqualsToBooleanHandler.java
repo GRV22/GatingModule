@@ -9,7 +9,7 @@ public class EqualsToBooleanHandler extends AbstractEqualsToTypeHandler<Boolean>
     private final BinaryOperatorTypeHandler next;
 
     @Override
-    public boolean apply(Object val, String val1) {
+    public boolean apply(final Object val, final String val1) {
         if (val instanceof Boolean) {
             return ((Boolean) val) == Boolean.parseBoolean(val1);
         } else {

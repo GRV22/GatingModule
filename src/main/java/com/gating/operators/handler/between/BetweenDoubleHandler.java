@@ -8,7 +8,7 @@ public class BetweenDoubleHandler extends AbstractBetweenTypeHandler<Double> {
 
     private final TernaryOperatorTypeHandler next;
 
-    public boolean apply(Object val, String first, String last) {
+    public boolean apply(final Object val, final String first, final String last) {
         if (val instanceof Double) {
             return Double.compare((Double) val, Double.valueOf(first)) >= 0 && Double.compare((Double) val,
                     Double.valueOf(last)) <= 0;

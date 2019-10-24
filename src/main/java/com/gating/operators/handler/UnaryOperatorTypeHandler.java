@@ -1,5 +1,5 @@
 package com.gating.operators.handler;
 
 public interface UnaryOperatorTypeHandler {
-    boolean apply(Object val);
+    boolean apply(final Object val);
 }

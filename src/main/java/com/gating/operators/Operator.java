@@ -9,5 +9,5 @@ public interface Operator {
 
     String getOperatorIdentity();
 
-    <T> Boolean apply(List<T> operands) throws Exception;
+    <T> Boolean apply(final List<T> operands) throws Exception;
 }

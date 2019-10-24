@@ -14,7 +14,7 @@ public class NoneOfDoubleHandler extends AbstractNoneOfTypeHandler<Double> {
     private final BinaryOperatorTypeHandler next;
 
     @Override
-    public boolean apply(Object val, String val1) {
+    public boolean apply(final Object val, final String val1) {
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof Double) {

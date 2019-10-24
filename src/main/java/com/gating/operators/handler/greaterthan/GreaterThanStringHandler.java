@@ -9,7 +9,7 @@ public class GreaterThanStringHandler extends AbstractGreaterThanTypeHandler<Str
     private final BinaryOperatorTypeHandler next;
 
     @Override
-    public boolean apply(Object val, String val1) {
+    public boolean apply(final Object val, final String val1) {
         if (val instanceof String) {
             return ((String) val).compareTo(val1) > 0;
         } else {

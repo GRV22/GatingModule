@@ -9,7 +9,7 @@ public class GreaterThanIntegerHandler extends AbstractGreaterThanTypeHandler<In
     private final BinaryOperatorTypeHandler next;
 
     @Override
-    public boolean apply(Object val, String val1) {
+    public boolean apply(final Object val, final String val1) {
         if (val instanceof Integer) {
             return (Integer) val > Integer.parseInt(val1);
         } else {

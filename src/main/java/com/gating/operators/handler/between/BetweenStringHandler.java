@@ -8,7 +8,7 @@ public class BetweenStringHandler extends AbstractBetweenTypeHandler<String> {
 
     private final TernaryOperatorTypeHandler next;
 
-    public boolean apply(Object val, String first, String last) {
+    public boolean apply(final Object val, final String first, final String last) {
         if (val instanceof String) {
             return ((String) val).compareToIgnoreCase(first) >= 0 && ((String) val).compareToIgnoreCase(last) <= 0;
         } else {

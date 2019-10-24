@@ -9,7 +9,7 @@ public class EqualsToIntegerHandler extends AbstractEqualsToTypeHandler<Integer>
     private final BinaryOperatorTypeHandler next;
 
     @Override
-    public boolean apply(Object val, String val1) {
+    public boolean apply(final Object val, final String val1) {
         if (val instanceof Integer) {
             return Integer.compare(((Integer) val), Integer.parseInt(val1)) == 0;
         } else {

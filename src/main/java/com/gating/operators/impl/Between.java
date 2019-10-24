@@ -10,12 +10,12 @@ public class Between extends AbstractOperator {
 
     private final TernaryOperatorTypeHandler handler;
 
-    public Between(TernaryOperatorTypeHandler handler) {
+    public Between(final TernaryOperatorTypeHandler handler) {
         super(OperatorInfo.Between);
         this.handler = handler;
     }
 
-    public <T> Boolean apply(List<T> operands) throws Exception {
+    public <T> Boolean apply(final List<T> operands) throws Exception {
         validateOperands(operands);
         return handler.apply(operands.get(0), (String) operands.get(1), (String) operands.get(2));
     }
