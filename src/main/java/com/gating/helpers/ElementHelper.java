@@ -2,6 +2,23 @@ package com.gating.helpers;
 
 import com.gating.enums.OperatorInfo;
 import com.gating.operators.*;
+import com.gating.operators.handler.BinaryOperatorTypeHandler;
+import com.gating.operators.handler.allof.AllOfDoubleHandler;
+import com.gating.operators.handler.allof.AllOfIntegerHandler;
+import com.gating.operators.handler.allof.AllOfStringHandler;
+import com.gating.operators.handler.between.BetweenDoubleHandler;
+import com.gating.operators.handler.between.BetweenIntegerHandler;
+import com.gating.operators.handler.between.BetweenStringHandler;
+import com.gating.operators.handler.equalsto.EqualsToBooleanHandler;
+import com.gating.operators.handler.equalsto.EqualsToDoubleHandler;
+import com.gating.operators.handler.equalsto.EqualsToIntegerHandler;
+import com.gating.operators.handler.equalsto.EqualsToStringHandler;
+import com.gating.operators.handler.greaterthan.GreaterThanDoubleHandler;
+import com.gating.operators.handler.greaterthan.GreaterThanIntegerHandler;
+import com.gating.operators.handler.greaterthan.GreaterThanStringHandler;
+import com.gating.operators.handler.lessthan.LessThanDoubleHandler;
+import com.gating.operators.handler.lessthan.LessThanIntegerHandler;
+import com.gating.operators.handler.lessthan.LessThanStringHandler;
 import com.gating.operators.impl.*;
 
 import java.util.HashMap;
@@ -17,16 +34,24 @@ public class ElementHelper {
 
     private ElementHelper() {
         operatorInfoOperatorMap = new HashMap<OperatorInfo, Operator>();
+
         addOperator(new Or());
         addOperator(new And());
-        addOperator(new EqualsTo());
-        addOperator(new NotEqualsTo());
-        addOperator(new GreaterThanEqualsTo());
-        addOperator(new GreaterThan());
-        addOperator(new LessThanEqualsTo());
-        addOperator(new LessThan());
-        addOperator(new Between());
-        addOperator(new AllOf());
+
+        final BinaryOperatorTypeHandler equalsToHandler = new EqualsToBooleanHandler(new EqualsToIntegerHandler(new EqualsToDoubleHandler(new EqualsToStringHandler(null))));
+        addOperator(new EqualsTo(equalsToHandler));
+        addOperator(new NotEqualsTo(equalsToHandler));
+
+        final BinaryOperatorTypeHandler greaterThanHandler = new GreaterThanIntegerHandler(new GreaterThanDoubleHandler(new GreaterThanStringHandler(null)));
+        addOperator(new GreaterThan(greaterThanHandler));
+        addOperator(new LessThanEqualsTo(greaterThanHandler));
+
+        final BinaryOperatorTypeHandler lessThanHandler = new LessThanIntegerHandler(new LessThanDoubleHandler(new LessThanStringHandler(null)));
+        addOperator(new LessThan(lessThanHandler));
+        addOperator(new GreaterThanEqualsTo(lessThanHandler));
+
+        addOperator(new Between(new BetweenIntegerHandler(new BetweenDoubleHandler(new BetweenStringHandler(null)))));
+        addOperator(new AllOf(new AllOfIntegerHandler(new AllOfDoubleHandler(new AllOfStringHandler(null)))));
         addOperator(new NoneOf());
     }
 
@@ -43,15 +68,7 @@ public class ElementHelper {
     }
 
     public Object getElementValue(final Object o) {
-        if ("true".equals(((String) o).toLowerCase()) || "false".equals(((String) o).toLowerCase())) {
-            return Boolean.parseBoolean(((String) o).toLowerCase());
-        } else {
-            try {
-                return Integer.parseInt((String) o);
-            } catch (final NumberFormatException ex) {
-                return ((String) o).toLowerCase();
-            }
-        }
+        return ((String) o);
     }
 
 }

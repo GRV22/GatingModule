@@ -27,7 +27,7 @@ public class EqualsToTest {
         attributes.put("name", "Ganesh");
 
         String feature = "Name Feature";
-        String expression = "name == ganesh";
+        String expression = "name == Ganesh";
 
         final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));

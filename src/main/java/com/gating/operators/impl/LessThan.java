@@ -2,24 +2,21 @@ package com.gating.operators.impl;
 
 import com.gating.operators.AbstractOperator;
 import com.gating.enums.OperatorInfo;
+import com.gating.operators.handler.BinaryOperatorTypeHandler;
 
 import java.util.List;
 
 public class LessThan extends AbstractOperator {
 
-    public LessThan() {
+    private final BinaryOperatorTypeHandler handler;
+
+    public LessThan(BinaryOperatorTypeHandler handler) {
         super(OperatorInfo.LessThan);
+        this.handler = handler;
     }
 
     public <T> Boolean apply(List<T> operands) throws Exception {
         validateOperands(operands);
-        for (T operand : operands) {
-            if (!(operand instanceof Integer)) {
-                throw new Exception("For LessThan Operation operands should be Integer type");
-            }
-        }
-        Integer operand1 = (Integer) operands.get(0);
-        Integer operand2 = (Integer) operands.get(1);
-        return operand1 < operand2;
+        return handler.apply(operands.get(0), (String) operands.get(1));
     }
 }

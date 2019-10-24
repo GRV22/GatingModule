@@ -2,22 +2,21 @@ package com.gating.operators.impl;
 
 import com.gating.operators.AbstractOperator;
 import com.gating.enums.OperatorInfo;
+import com.gating.operators.handler.BinaryOperatorTypeHandler;
 
 import java.util.List;
 
 public class EqualsTo extends AbstractOperator {
 
-    public EqualsTo() {
+    private final BinaryOperatorTypeHandler handler;
+
+    public EqualsTo(BinaryOperatorTypeHandler handler) {
         super(OperatorInfo.EqualsTo);
+        this.handler = handler;
     }
 
     public <T> Boolean apply(List<T> operands) throws Exception {
         validateOperands(operands);
-        T operand1 = operands.get(0);
-        T operand2 = operands.get(1);
-        if (operand1 instanceof String && operand2 instanceof String) {
-            return ((String) operand1).equalsIgnoreCase((String) operand2);
-        }
-        return operand1.equals(operand2);
+        return handler.apply(operands.get(0), (String) operands.get(1));
     }
 }

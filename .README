@@ -14,3 +14,13 @@ How to use Gating Validator:
 4. For equalsTo, notEqualsTo operator String and Integer and Boolean values supported
 5. You can use Round braces also "(" ")"
 6. All values , operators, attributes name, braces should be space separated.
+
+
+Extending Gating Validator functionality  and flexibility:
+
+Few Assumptions/Facts;
+1. Expression is always be represent as string type so it means operands in expression are always be string type.
+2. How to figure out data type ?
+    Basically we are passing map with generic type Object in user attributes. But actual we are passing values
+    as  either Integer/Double/String/Boolean or can be extend custom class. So we will use chain of responsiblity design
+    pattern to handle the data type . If in chain of responsiblity no one match then we will throw UnsupportedOperationException.

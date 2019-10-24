@@ -19,6 +19,14 @@ public class PostfixHelper {
         return PostfixHelper.SingletonHelper.INSTANCE;
     }
 
+    public void showClass(Object o) {
+        if (o == null) {
+            System.out.println(o);
+        } else {
+            System.out.println(o.getClass());
+        }
+    }
+
     public boolean evaluate(String postfixExpression, Map<String, Object> attributes) throws Exception {
         Stack<Object> stack = new Stack<Object>();
         String[] expressionElements = postfixExpression.split(" ");
@@ -33,10 +41,10 @@ public class PostfixHelper {
                 Collections.reverse(operands);
                 stack.push(operator.apply(operands));
             } else {
-                if (null == attributes.get(element)) {
-                    stack.push(helper.getElementValue(element));
-                } else {
+                if (attributes.containsKey(element)) {
                     stack.push(attributes.get(element));
+                } else {
+                    stack.push(element);
                 }
             }
         }
