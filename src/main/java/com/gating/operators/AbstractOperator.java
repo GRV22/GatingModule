@@ -1,10 +1,12 @@
 package com.gating.operators;
 
+import com.gating.enums.OperatorInfo;
+
 import java.util.List;
 
 public abstract class AbstractOperator implements Operator {
 
-    protected OperatorInfo info;
+    protected final OperatorInfo info;
 
     public AbstractOperator(final OperatorInfo operatorInfo) {
         this.info = operatorInfo;
@@ -31,6 +33,10 @@ public abstract class AbstractOperator implements Operator {
         if (!isOperandsEligible(operands)) {
             throw new Exception(info.getIdentity() + " don't have expected no of operands");
         }
+    }
+
+    public OperatorInfo getOperatorInfo() {
+        return info;
     }
 
 }

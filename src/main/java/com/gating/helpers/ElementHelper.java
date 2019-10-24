@@ -1,27 +1,84 @@
 package com.gating.helpers;
 
-import com.gating.operators.*;
+import com.gating.enums.OperatorInfo;
+import com.gating.operators.AbstractOperator;
+import com.gating.operators.Operator;
+import com.gating.operators.handler.BinaryOperatorTypeHandler;
+import com.gating.operators.handler.TernaryOperatorTypeHandler;
+import com.gating.operators.handler.allof.AllOfDoubleHandler;
+import com.gating.operators.handler.allof.AllOfIntegerHandler;
+import com.gating.operators.handler.allof.AllOfStringHandler;
+import com.gating.operators.handler.between.BetweenDoubleHandler;
+import com.gating.operators.handler.between.BetweenIntegerHandler;
+import com.gating.operators.handler.between.BetweenStringHandler;
+import com.gating.operators.handler.equalsto.EqualsToBooleanHandler;
+import com.gating.operators.handler.equalsto.EqualsToDoubleHandler;
+import com.gating.operators.handler.equalsto.EqualsToIntegerHandler;
+import com.gating.operators.handler.equalsto.EqualsToStringHandler;
+import com.gating.operators.handler.greaterthan.GreaterThanDoubleHandler;
+import com.gating.operators.handler.greaterthan.GreaterThanIntegerHandler;
+import com.gating.operators.handler.greaterthan.GreaterThanStringHandler;
+import com.gating.operators.handler.lessthan.LessThanDoubleHandler;
+import com.gating.operators.handler.lessthan.LessThanIntegerHandler;
+import com.gating.operators.handler.lessthan.LessThanStringHandler;
+import com.gating.operators.handler.noneof.NoneOfDoubleHandler;
+import com.gating.operators.handler.noneof.NoneOfIntegerHandler;
+import com.gating.operators.handler.noneof.NoneOfStringHandler;
+import com.gating.operators.impl.AllOf;
+import com.gating.operators.impl.And;
+import com.gating.operators.impl.Between;
+import com.gating.operators.impl.EqualsTo;
+import com.gating.operators.impl.GreaterThan;
+import com.gating.operators.impl.GreaterThanEqualsTo;
+import com.gating.operators.impl.LessThan;
+import com.gating.operators.impl.LessThanEqualsTo;
+import com.gating.operators.impl.NoneOf;
+import com.gating.operators.impl.NotEqualsTo;
+import com.gating.operators.impl.Or;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ElementHelper {
 
-    private Map<OperatorInfo, Operator> operatorInfoOperatorMap;
+    private final Map<OperatorInfo, Operator> operatorInfoOperatorMap;
+
+    private void addOperator(AbstractOperator operator) {
+        operatorInfoOperatorMap.put(operator.getOperatorInfo(), operator);
+    }
 
     private ElementHelper() {
-        operatorInfoOperatorMap = new HashMap<OperatorInfo, Operator>();
-        operatorInfoOperatorMap.put(OperatorInfo.Or, new Or());
-        operatorInfoOperatorMap.put(OperatorInfo.And, new And());
-        operatorInfoOperatorMap.put(OperatorInfo.EqualsTo, new EqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.NotEqualsTo, new NotEqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.GreaterThanEqualsTo, new GreaterThanEqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.GreaterThan, new GreaterThan());
-        operatorInfoOperatorMap.put(OperatorInfo.LessThanEqualsTo, new LessThanEqualsTo());
-        operatorInfoOperatorMap.put(OperatorInfo.LessThan, new LessThan());
-        operatorInfoOperatorMap.put(OperatorInfo.Between, new Between());
-        operatorInfoOperatorMap.put(OperatorInfo.AllOf, new AllOf());
-        operatorInfoOperatorMap.put(OperatorInfo.NoneOf, new NoneOf());
+        operatorInfoOperatorMap = new HashMap<>();
+
+        addOperator(new Or());
+        addOperator(new And());
+
+        final BinaryOperatorTypeHandler equalsToHandler = new EqualsToBooleanHandler(new EqualsToIntegerHandler(new
+                EqualsToDoubleHandler(new EqualsToStringHandler(null))));
+        addOperator(new EqualsTo(equalsToHandler));
+        addOperator(new NotEqualsTo(equalsToHandler));
+
+        final BinaryOperatorTypeHandler greaterThanHandler = new GreaterThanIntegerHandler(new
+                GreaterThanDoubleHandler(new GreaterThanStringHandler(null)));
+        addOperator(new GreaterThan(greaterThanHandler));
+        addOperator(new LessThanEqualsTo(greaterThanHandler));
+
+        final BinaryOperatorTypeHandler lessThanHandler = new LessThanIntegerHandler(new LessThanDoubleHandler(new
+                LessThanStringHandler(null)));
+        addOperator(new LessThan(lessThanHandler));
+        addOperator(new GreaterThanEqualsTo(lessThanHandler));
+
+        final TernaryOperatorTypeHandler betweenHandler = new BetweenIntegerHandler(new BetweenDoubleHandler(new
+                BetweenStringHandler(null)));
+        addOperator(new Between(betweenHandler));
+
+        final BinaryOperatorTypeHandler allOfHandler = new AllOfIntegerHandler(new AllOfDoubleHandler(new
+                AllOfStringHandler(null)));
+        addOperator(new AllOf(allOfHandler));
+
+        final BinaryOperatorTypeHandler noneOfHandler = new NoneOfIntegerHandler(new NoneOfDoubleHandler(new
+                NoneOfStringHandler(null)));
+        addOperator(new NoneOf(noneOfHandler));
     }
 
     private static class SingletonHelper {
@@ -32,27 +89,8 @@ public class ElementHelper {
         return SingletonHelper.INSTANCE;
     }
 
-    public boolean isOperator(final String element) {
-        if (null == element) {
-            return false;
-        }
-        return (null != OperatorInfo.getByName(element.toLowerCase()));
-    }
-
     public Operator getOperator(final OperatorInfo opInfo) {
         return operatorInfoOperatorMap.get(opInfo);
-    }
-
-    public Object getElementValue(final Object o) {
-        if ("true".equals(((String) o).toLowerCase()) || "false".equals(((String) o).toLowerCase())) {
-            return Boolean.parseBoolean(((String) o).toLowerCase());
-        } else {
-            try {
-                return Integer.parseInt((String) o);
-            } catch (final NumberFormatException ex) {
-                return ((String) o).toLowerCase();
-            }
-        }
     }
 
 }
