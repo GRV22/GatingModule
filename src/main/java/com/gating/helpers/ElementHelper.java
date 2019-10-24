@@ -3,6 +3,7 @@ package com.gating.helpers;
 import com.gating.enums.OperatorInfo;
 import com.gating.operators.*;
 import com.gating.operators.handler.BinaryOperatorTypeHandler;
+import com.gating.operators.handler.TernaryOperatorTypeHandler;
 import com.gating.operators.handler.allof.AllOfDoubleHandler;
 import com.gating.operators.handler.allof.AllOfIntegerHandler;
 import com.gating.operators.handler.allof.AllOfStringHandler;
@@ -19,6 +20,9 @@ import com.gating.operators.handler.greaterthan.GreaterThanStringHandler;
 import com.gating.operators.handler.lessthan.LessThanDoubleHandler;
 import com.gating.operators.handler.lessthan.LessThanIntegerHandler;
 import com.gating.operators.handler.lessthan.LessThanStringHandler;
+import com.gating.operators.handler.noneof.NoneOfDoubleHandler;
+import com.gating.operators.handler.noneof.NoneOfIntegerHandler;
+import com.gating.operators.handler.noneof.NoneOfStringHandler;
 import com.gating.operators.impl.*;
 
 import java.util.HashMap;
@@ -50,9 +54,14 @@ public class ElementHelper {
         addOperator(new LessThan(lessThanHandler));
         addOperator(new GreaterThanEqualsTo(lessThanHandler));
 
-        addOperator(new Between(new BetweenIntegerHandler(new BetweenDoubleHandler(new BetweenStringHandler(null)))));
-        addOperator(new AllOf(new AllOfIntegerHandler(new AllOfDoubleHandler(new AllOfStringHandler(null)))));
-        addOperator(new NoneOf());
+        final TernaryOperatorTypeHandler betweenHandler = new BetweenIntegerHandler(new BetweenDoubleHandler(new BetweenStringHandler(null)));
+        addOperator(new Between(betweenHandler));
+
+        final BinaryOperatorTypeHandler allOfHandler = new AllOfIntegerHandler(new AllOfDoubleHandler(new AllOfStringHandler(null)));
+        addOperator(new AllOf(allOfHandler));
+
+        final BinaryOperatorTypeHandler noneOfHandler = new NoneOfIntegerHandler(new NoneOfDoubleHandler(new NoneOfStringHandler(null)));
+        addOperator(new NoneOf(noneOfHandler));
     }
 
     private static class SingletonHelper {
@@ -65,10 +74,6 @@ public class ElementHelper {
 
     public Operator getOperator(final OperatorInfo opInfo) {
         return operatorInfoOperatorMap.get(opInfo);
-    }
-
-    public Object getElementValue(final Object o) {
-        return ((String) o);
     }
 
 }
