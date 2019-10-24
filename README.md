@@ -25,3 +25,4 @@ Few Assumptions/Facts;
     as  either Integer/Double/String/Boolean or can be extend custom class. So we will use chain of responsiblity design
     pattern to handle the data type . If in chain of responsiblity no one match then we will throw UnsupportedOperationException.
 3. Because of Chain Of Responsiblity principle for handling input now we can add of new Operator with custom definition by extending Abstract Handler and adding new handler in chain.
+4. Operators in expression can be case insensitive but apart from it everything is case sensitive (exception Boolean field). eg "Ganesh" and "ganesh" are not equal.
