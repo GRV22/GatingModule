@@ -30,14 +30,14 @@ import java.util.Map;
 
 public class ElementHelper {
 
-    private Map<OperatorInfo, Operator> operatorInfoOperatorMap;
+    private final Map<OperatorInfo, Operator> operatorInfoOperatorMap;
 
     private void addOperator(AbstractOperator operator) {
         operatorInfoOperatorMap.put(operator.getOperatorInfo(), operator);
     }
 
     private ElementHelper() {
-        operatorInfoOperatorMap = new HashMap<OperatorInfo, Operator>();
+        operatorInfoOperatorMap = new HashMap<>();
 
         addOperator(new Or());
         addOperator(new And());

@@ -1,9 +1,8 @@
 package com.gating.operators.impl;
 
-import com.gating.operators.AbstractOperator;
 import com.gating.enums.OperatorInfo;
+import com.gating.operators.AbstractOperator;
 import com.gating.operators.handler.BinaryOperatorTypeHandler;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 

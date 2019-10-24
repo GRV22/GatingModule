@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class AbstractOperator implements Operator {
 
-    protected OperatorInfo info;
+    protected final OperatorInfo info;
 
     public AbstractOperator(final OperatorInfo operatorInfo) {
         this.info = operatorInfo;

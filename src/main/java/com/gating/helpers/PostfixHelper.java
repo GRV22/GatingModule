@@ -20,13 +20,13 @@ public class PostfixHelper {
     }
 
     public boolean evaluate(String postfixExpression, Map<String, Object> attributes) throws Exception {
-        Stack<Object> stack = new Stack<Object>();
+        Stack<Object> stack = new Stack<>();
         String[] expressionElements = postfixExpression.split(" ");
         for (final String element : expressionElements) {
             if (OperatorInfo.isExist(element)) {
                 Operator operator = helper.getOperator(OperatorInfo.getByName(element.toLowerCase()));
                 int noOfOperands = operator.getNoOfOperands();
-                final List<Object> operands = new ArrayList<Object>();
+                final List<Object> operands = new ArrayList<>();
                 for (int i = 0; i < noOfOperands; ++i) {
                     operands.add(stack.pop());
                 }

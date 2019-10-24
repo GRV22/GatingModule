@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class GatingValidator {
 
-    private InfixHelper infixHelper;
-    private PostfixHelper postfixHelper;
+    private final InfixHelper infixHelper;
+    private final PostfixHelper postfixHelper;
 
     public GatingValidator() {
         infixHelper = InfixHelper.getInstance();

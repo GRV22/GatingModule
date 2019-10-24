@@ -2,7 +2,6 @@ package com.gating.operators.handler.noneof;
 
 import com.gating.operators.handler.BinaryOperatorTypeHandler;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,11 +18,11 @@ public class NoneOfDoubleHandler extends AbstractNoneOfTypeHandler<Double> {
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof Double) {
-            return !Arrays.asList(val1.split(",")).stream()
-                    .anyMatch(x -> (Double.compare((Double) val, Double.valueOf(x)) == 0));
+            return Arrays.stream(val1.split(","))
+                    .noneMatch(x -> (Double.compare((Double) val, Double.valueOf(x)) == 0));
         } else if (val instanceof Collection && ((Collection) val).stream().findFirst().get() instanceof Double) {
-            return Collections.disjoint(Arrays.asList(val1.split(",")).stream()
-                    .map(x -> Double.valueOf(x))
+            return Collections.disjoint(Arrays.stream(val1.split(","))
+                    .map(Double::valueOf)
                     .collect(Collectors.toList()), (Collection) val);
         } else {
             validateNotNull(next);

@@ -17,11 +17,11 @@ public class AllOfDoubleHandler extends AbstractAllOfTypeHandler<Double> {
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof Double) {
-            return Arrays.asList(val1.split(",")).stream()
+            return Arrays.stream(val1.split(","))
                     .anyMatch(x -> (Double.compare((Double) val ,Double.valueOf(x)) == 0));
         } else if (val instanceof Collection && ((Collection) val).stream().findFirst().get() instanceof Double) {
-            return Arrays.asList(val1.split(",")).stream()
-                    .map(x -> Double.valueOf(x))
+            return Arrays.stream(val1.split(","))
+                    .map(Double::valueOf)
                     .collect(Collectors.toList())
                     .containsAll((Collection) val);
         } else {

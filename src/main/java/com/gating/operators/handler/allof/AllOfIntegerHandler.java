@@ -17,11 +17,11 @@ public class AllOfIntegerHandler extends AbstractAllOfTypeHandler<Integer> {
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof Integer) {
-            return Arrays.asList(val1.split(",")).stream()
-                    .anyMatch(x -> ((Integer) val == Integer.valueOf(x)));
+            return Arrays.stream(val1.split(","))
+                    .anyMatch(x -> (val == Integer.valueOf(x)));
         } else if (val instanceof Collection && ((Collection) val).stream().findFirst().get() instanceof Integer) {
-            return Arrays.asList(val1.split(",")).stream()
-                    .map(x -> Integer.valueOf(x))
+            return Arrays.stream(val1.split(","))
+                    .map(Integer::valueOf)
                     .collect(Collectors.toList())
                     .containsAll((Collection) val);
         } else {

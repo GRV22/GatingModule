@@ -16,7 +16,7 @@ How to use Gating Validator:
 6. All values , operators, attributes name, braces should be space separated.
 
 
-Extending Gating Validator functionality  and flexibility:
+Extending Gating Validator functionality and flexibility:
 
 Few Assumptions/Facts;
 1. Expression is always be represent as string type so it means operands in expression are always be string type.
@@ -24,3 +24,5 @@ Few Assumptions/Facts;
     Basically we are passing map with generic type Object in user attributes. But actual we are passing values
     as  either Integer/Double/String/Boolean or can be extend custom class. So we will use chain of responsiblity design
     pattern to handle the data type . If in chain of responsiblity no one match then we will throw UnsupportedOperationException.
+3. Because of Chain Of Responsiblity principle for handling input now we can add of new Operator with custom definition  
+    by extending Abstract Handler and adding new handler in chain.

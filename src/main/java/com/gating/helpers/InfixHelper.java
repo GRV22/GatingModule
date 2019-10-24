@@ -19,7 +19,7 @@ public class InfixHelper {
     public String convertToPostfix(String expression) {
         final StringBuilder sb = new StringBuilder();
         final String[] elements = expression.split(" ");
-        final Stack<String> stack = new Stack<String>();
+        final Stack<String> stack = new Stack<>();
 
         for (final String element : elements) {
             if (element.equals("(")) {
