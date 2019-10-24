@@ -18,7 +18,7 @@ public class AllOfStringHandler extends AbstractAllOfTypeHandler<String> {
         } else if (val instanceof String) {
             final List<String> values = Arrays.asList(((String) val).split(","));
             return Arrays.asList(val1.split(",")).containsAll(values);
-        } else if (val instanceof Collection && ((Collection)val).stream().findFirst().get() instanceof String) {
+        } else if (val instanceof Collection && ((Collection) val).stream().findFirst().get() instanceof String) {
             return Arrays.asList(val1.split(",")).containsAll((Collection) val);
         } else {
             validateNotNull(next);

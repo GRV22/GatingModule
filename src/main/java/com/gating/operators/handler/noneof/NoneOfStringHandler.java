@@ -20,7 +20,7 @@ public class NoneOfStringHandler extends AbstractNoneOfTypeHandler<String> {
         } else if (val instanceof String) {
             final List<String> values = Arrays.asList(((String) val).split(","));
             return Collections.disjoint(Arrays.asList(val1.split(",")), values);
-        } else if (val instanceof Collection && ((Collection)val).stream().findFirst().get() instanceof String) {
+        } else if (val instanceof Collection && ((Collection) val).stream().findFirst().get() instanceof String) {
             return Collections.disjoint(Arrays.asList(val1.split(",")), (Collection) val);
         } else {
             validateNotNull(next);

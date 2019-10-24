@@ -13,7 +13,7 @@ public class GateValidatorTest {
 
     @Test
     public void positiveSelectedAgeGroupDelhiUser() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 35);
         attributes.put("city", "delhi");
 
@@ -26,7 +26,7 @@ public class GateValidatorTest {
 
     @Test
     public void negativeSelectedAgeGroupDelhiUser() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 35);
         attributes.put("city", "mumbai");
 
@@ -39,14 +39,15 @@ public class GateValidatorTest {
 
     @Test
     public void positiveSelectedLocationTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("city", "Mumbai");
         attributes.put("pincode", "234567");
         attributes.put("accountType", "PREMIUM");
 
         String feature = "Selected location and age group for not free user";
-        String expression = "age between 20 30 and ( city == Delhi or city == Mumbai ) and ( pincode != 34556 or accountType != free )";
+        String expression = "age between 20 30 and ( city == Delhi or city == Mumbai ) and ( pincode != 34556 or " +
+                "accountType != free )";
 
         final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
@@ -55,14 +56,15 @@ public class GateValidatorTest {
 
     @Test
     public void negativeSelectedLocationTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("city", "Bangalore");
         attributes.put("pincode", "234567");
         attributes.put("accountType", "PREMIUM");
 
         String feature = "Selected location and age group for not free user";
-        String expression = "age between 20 30 and ( city == Delhi or city == Mumbai ) and ( pincode != 34556 or accountType != free )";
+        String expression = "age between 20 30 and ( city == Delhi or city == Mumbai ) and ( pincode != 34556 or " +
+                "accountType != free )";
 
         final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
@@ -71,7 +73,7 @@ public class GateValidatorTest {
 
     @Test
     public void positiveAgeAndGenderTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("gender", "male");
 
@@ -85,7 +87,7 @@ public class GateValidatorTest {
 
     @Test
     public void negativeAgeAndGenderTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 68);
         attributes.put("gender", "male");
 
@@ -99,18 +101,22 @@ public class GateValidatorTest {
 
     @Test
     public void postivePastPurchaseNotBelongsToCitiesTest1() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 30);
         attributes.put("lastpurchasedCities", "delhi,ahemdabad,indore");
         attributes.put("last30DaysPurchaseAmount", 2000);
 
         String feature = "Past purchase and purchase doesn't belongs to cities";
 
-        List<String> equivalentExpressions = new ArrayList<String>();
-        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore or age >= 40");
-        equivalentExpressions.add("( last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore ) or age >= 40");
-        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and ( lastpurchasedCities noneof hyderabad,bangalore ) or age >= 40");
-        equivalentExpressions.add("lastpurchasedCities noneof hyderabad,bangalore and last30DaysPurchaseAmount < 3000 or age >= 40");
+        List<String> equivalentExpressions = new ArrayList<>();
+        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore" +
+                " or age >= 40");
+        equivalentExpressions.add("( last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad," +
+                "bangalore ) or age >= 40");
+        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and ( lastpurchasedCities noneof hyderabad," +
+                "bangalore ) or age >= 40");
+        equivalentExpressions.add("lastpurchasedCities noneof hyderabad,bangalore and last30DaysPurchaseAmount < 3000" +
+                " or age >= 40");
 
 
         final GatingValidator validator = new GatingValidator();
@@ -122,18 +128,22 @@ public class GateValidatorTest {
 
     @Test
     public void postivePastPurchaseNotBelongsToCitiesTest2() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 40);
         attributes.put("lastpurchasedCities", "hyderabad,ahemdabad,indore");
         attributes.put("last30DaysPurchaseAmount", 5000);
 
         String feature = "Past purchase and purchase doesn't belongs to cities";
 
-        List<String> equivalentExpressions = new ArrayList<String>();
-        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore or age >= 40");
-        equivalentExpressions.add("( last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore ) or age >= 40");
-        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and ( lastpurchasedCities noneof hyderabad,bangalore ) or age >= 40");
-        equivalentExpressions.add("lastpurchasedCities noneof hyderabad,bangalore and last30DaysPurchaseAmount < 3000 or age >= 40");
+        List<String> equivalentExpressions = new ArrayList<>();
+        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore" +
+                " or age >= 40");
+        equivalentExpressions.add("( last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad," +
+                "bangalore ) or age >= 40");
+        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and ( lastpurchasedCities noneof hyderabad," +
+                "bangalore ) or age >= 40");
+        equivalentExpressions.add("lastpurchasedCities noneof hyderabad,bangalore and last30DaysPurchaseAmount < 3000" +
+                " or age >= 40");
 
 
         final GatingValidator validator = new GatingValidator();
@@ -145,18 +155,22 @@ public class GateValidatorTest {
 
     @Test
     public void negativePastPurchaseNotBelongsToCitiesTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 30);
         attributes.put("lastpurchasedCities", "hyderabad,ahemdabad,indore");
         attributes.put("last30DaysPurchaseAmount", 2000);
 
         String feature = "Past purchase and purchase doesn't belongs to cities";
 
-        List<String> equivalentExpressions = new ArrayList<String>();
-        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore or age >= 40");
-        equivalentExpressions.add("( last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore ) or age >= 40");
-        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and ( lastpurchasedCities noneof hyderabad,bangalore ) or age >= 40");
-        equivalentExpressions.add("lastpurchasedCities noneof hyderabad,bangalore and last30DaysPurchaseAmount < 3000 or age >= 40");
+        List<String> equivalentExpressions = new ArrayList<>();
+        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad,bangalore" +
+                " or age >= 40");
+        equivalentExpressions.add("( last30DaysPurchaseAmount < 3000 and lastpurchasedCities noneof hyderabad," +
+                "bangalore ) or age >= 40");
+        equivalentExpressions.add("last30DaysPurchaseAmount < 3000 and ( lastpurchasedCities noneof hyderabad," +
+                "bangalore ) or age >= 40");
+        equivalentExpressions.add("lastpurchasedCities noneof hyderabad,bangalore and last30DaysPurchaseAmount < 3000" +
+                " or age >= 40");
 
 
         final GatingValidator validator = new GatingValidator();

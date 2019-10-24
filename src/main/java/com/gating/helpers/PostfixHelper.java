@@ -3,13 +3,18 @@ package com.gating.helpers;
 import com.gating.operators.Operator;
 import com.gating.enums.OperatorInfo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 public class PostfixHelper {
 
     private final ElementHelper helper = ElementHelper.getInstance();
 
-    private PostfixHelper() {}
+    private PostfixHelper() {
+    }
 
     private static class SingletonHelper {
         private static final PostfixHelper INSTANCE = new PostfixHelper();

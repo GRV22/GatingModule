@@ -14,7 +14,7 @@ public class BetweenOperatorTest {
 
     @Test
     public void postiveEvaluateBetweenOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Between Feature";
@@ -27,7 +27,7 @@ public class BetweenOperatorTest {
 
     @Test
     public void negativeEvaluateBetweenOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Between Feature";

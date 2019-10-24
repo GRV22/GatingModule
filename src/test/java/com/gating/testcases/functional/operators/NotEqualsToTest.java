@@ -9,12 +9,14 @@ import java.util.Map;
 
 public class NotEqualsToTest {
 
-    /** Not Equals To Test **/
+    /**
+     * Not Equals To Test
+     **/
 
 
     @Test
     public void postiveEvaluteNotEqualsToBooleanTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("qualify", false);
 
         String feature = "Qualify Feature";
@@ -26,7 +28,7 @@ public class NotEqualsToTest {
 
     @Test
     public void negativeEvaluteNotEqualsToBooleanTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("qualify", true);
 
         String feature = "Qualify Feature";
@@ -38,7 +40,7 @@ public class NotEqualsToTest {
 
     @Test
     public void positiveEvaluteNotEqualsToStringTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("name", "arshu");
 
         String feature = "Not Name Feature";
@@ -50,7 +52,7 @@ public class NotEqualsToTest {
 
     @Test
     public void negativeEvaluteNotEqualsToStringTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("name", "ganesh");
 
         String feature = "Not Name Feature";
@@ -63,7 +65,7 @@ public class NotEqualsToTest {
 
     @Test
     public void postiveEvaluteNotEqualsToIntegerTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 26);
 
         String feature = "Age Feature";
@@ -75,7 +77,7 @@ public class NotEqualsToTest {
 
     @Test
     public void negativeEvaluteNotEqualsToIntegerTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Feature";

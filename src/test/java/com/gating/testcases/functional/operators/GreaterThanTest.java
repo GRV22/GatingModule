@@ -14,7 +14,7 @@ public class GreaterThanTest {
 
     @Test
     public void positiveEvaluateGreaterThanOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Greater than Feature";
@@ -26,7 +26,7 @@ public class GreaterThanTest {
 
     @Test
     public void negativeEvaluateGreaterThanOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Greater than Feature";

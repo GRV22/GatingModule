@@ -14,7 +14,7 @@ public class LessThanEqualsToTest {
 
     @Test
     public void positiveEvaluateLessThanEqualsToOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Less than EqualsTo Feature";
@@ -26,7 +26,7 @@ public class LessThanEqualsToTest {
 
     @Test
     public void negativeEvaluateLessThanEqualsToOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Less than EqualsTo Feature";

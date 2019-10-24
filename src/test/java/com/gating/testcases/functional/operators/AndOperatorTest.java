@@ -13,7 +13,7 @@ public class AndOperatorTest {
 
     @Test
     public void positiveEvaluateAndOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("name", "arshu");
 
@@ -26,7 +26,7 @@ public class AndOperatorTest {
 
     @Test
     public void negativeEvaluateAndOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("name", "ganesh");
 

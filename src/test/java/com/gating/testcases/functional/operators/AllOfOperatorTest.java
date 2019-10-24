@@ -14,7 +14,7 @@ public class AllOfOperatorTest {
 
     @Test
     public void positiveEvaluteAllOffTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", "mumbai,gujrat,delhi");
 
         String feature = "All Of User eligible if they visited these places Feature";
@@ -26,7 +26,7 @@ public class AllOfOperatorTest {
 
     @Test
     public void negativeEvaluteAllOffTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", "mumbai,gujrat,delhi");
 
         String feature = "All Of User eligible if they visited these places Feature";
@@ -38,7 +38,7 @@ public class AllOfOperatorTest {
 
     @Test
     public void positiveEvaluteAllOffListTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", Arrays.asList("mumbai", "gujrat", "delhi"));
 
         String feature = "All Of User eligible if they visited these places Feature";
@@ -50,7 +50,7 @@ public class AllOfOperatorTest {
 
     @Test
     public void negativeEvaluteAllOffListTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", Arrays.asList("mumbai", "gujrat", "delhi"));
 
         String feature = "All Of User eligible if they visited these places Feature";
@@ -62,7 +62,7 @@ public class AllOfOperatorTest {
 
     @Test
     public void positiveEvaluteAllOffEmptyListTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", Arrays.asList());
 
         String feature = "All Of User eligible if they visited these places Feature";
@@ -74,7 +74,7 @@ public class AllOfOperatorTest {
 
     @Test
     public void positiveEvaluteAllOffNullTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", null);
 
         String feature = "All Of User eligible if they visited these places Feature";

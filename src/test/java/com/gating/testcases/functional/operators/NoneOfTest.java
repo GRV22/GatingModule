@@ -13,7 +13,7 @@ public class NoneOfTest {
 
     @Test
     public void positiveEvaluteNoneOfTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", "mumbai,delhi");
 
         String feature = "None Of User eligible if they visited these places Feature";
@@ -25,7 +25,7 @@ public class NoneOfTest {
 
     @Test
     public void negativeEvaluteNoneOfTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("visitedLocations", "mumbai,gujrat,delhi");
 
         String feature = "None Of User eligible if they visited these places Feature";

@@ -24,7 +24,7 @@ public enum OperatorInfo {
     private int noOfOperands;
 
     public static OperatorInfo getByName(String identity) {
-        for(final OperatorInfo operatorInfo: OperatorInfo.values()) {
+        for (final OperatorInfo operatorInfo : OperatorInfo.values()) {
             if (operatorInfo.getIdentity().equals(identity.toLowerCase())) {
                 return operatorInfo;
             }
@@ -33,7 +33,7 @@ public enum OperatorInfo {
     }
 
     public static boolean isExist(String identity) {
-        for(final OperatorInfo operatorInfo: OperatorInfo.values()) {
+        for (final OperatorInfo operatorInfo : OperatorInfo.values()) {
             if (operatorInfo.getIdentity().equals(identity.toLowerCase())) {
                 return true;
             }
@@ -46,14 +46,13 @@ public enum OperatorInfo {
         if (identity == null) {
             return -1;
         }
-        for(final OperatorInfo operatorInfo: OperatorInfo.values()) {
+        for (final OperatorInfo operatorInfo : OperatorInfo.values()) {
             if (operatorInfo.getIdentity().equals(identity.toLowerCase())) {
                 return operatorInfo.getPrecedenceOrder();
             }
         }
         return -1;
     }
-
 
 
 }

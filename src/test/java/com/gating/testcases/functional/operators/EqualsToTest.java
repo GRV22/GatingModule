@@ -11,7 +11,7 @@ public class EqualsToTest {
 
     @Test
     public void positiveEvaluteEqualsToBoolean() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("qualify", true);
 
         String feature = "Qualify Feature";
@@ -23,7 +23,7 @@ public class EqualsToTest {
 
     @Test
     public void positiveEvaluteEqualsToString() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("name", "Ganesh");
 
         String feature = "Name Feature";
@@ -36,7 +36,7 @@ public class EqualsToTest {
 
     @Test
     public void positiveEvaluteEqualsToInteger() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
 
         String feature = "Age Feature";
@@ -48,7 +48,7 @@ public class EqualsToTest {
 
     @Test
     public void negativeEvaluteEqualsToBoolean() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("qualify", false);
 
         String feature = "Qualify Feature";
@@ -60,7 +60,7 @@ public class EqualsToTest {
 
     @Test
     public void negativeEvaluteEqualsToString() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("name", "arshu");
 
         String feature = "Name Feature";
@@ -73,7 +73,7 @@ public class EqualsToTest {
 
     @Test
     public void negativeEvaluteEqualsToInteger() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 26);
 
         String feature = "Age Feature";

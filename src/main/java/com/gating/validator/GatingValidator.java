@@ -25,7 +25,8 @@ public class GatingValidator {
         System.out.println();
     }
 
-    public boolean isAllowed(String conditionalExperssion, String featureName, Map<String, Object> attributes) throws Exception {
+    public boolean isAllowed(String conditionalExperssion, String featureName, Map<String, Object> attributes) throws
+            Exception {
         String postfix = infixHelper.convertToPostfix(conditionalExperssion);
         printInformationOnEnter(featureName, conditionalExperssion, postfix);
         return postfixHelper.evaluate(postfix, attributes);

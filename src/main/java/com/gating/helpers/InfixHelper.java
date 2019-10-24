@@ -6,7 +6,8 @@ import java.util.Stack;
 
 public class InfixHelper {
 
-    private InfixHelper() {}
+    private InfixHelper() {
+    }
 
     private static class SingletonHelper {
         private static final InfixHelper INSTANCE = new InfixHelper();
@@ -30,7 +31,8 @@ public class InfixHelper {
                     sb.append(popElement).append(" ");
                 }
             } else if (OperatorInfo.isExist(element)) {
-                while (!stack.isEmpty() && OperatorInfo.getPrecedence(stack.peek()) >= OperatorInfo.getPrecedence(element)) {
+                while (!stack.isEmpty() && OperatorInfo.getPrecedence(stack.peek()) >= OperatorInfo.getPrecedence
+                        (element)) {
                     sb.append(stack.pop()).append(" ");
                 }
                 stack.push(element);

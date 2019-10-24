@@ -10,7 +10,8 @@ public class BetweenDoubleHandler extends AbstractBetweenTypeHandler<Double> {
 
     public boolean apply(Object val, String first, String last) {
         if (val instanceof Double) {
-            return Double.compare((Double) val, Double.valueOf(first)) >= 0 && Double.compare((Double) val, Double.valueOf(last)) <= 0;
+            return Double.compare((Double) val, Double.valueOf(first)) >= 0 && Double.compare((Double) val,
+                    Double.valueOf(last)) <= 0;
         } else {
             validateNotNull(next);
             return this.next.apply(val, first, last);

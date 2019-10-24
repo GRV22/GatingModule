@@ -13,7 +13,7 @@ public class OrOperatorTest {
 
     @Test
     public void positiveEvaluateOrOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("name", "ganesh");
 
@@ -26,7 +26,7 @@ public class OrOperatorTest {
 
     @Test
     public void negativeEvaluateOrOperatorTest() throws Exception {
-        Map<String, Object> attributes = new HashMap<String, Object>();
+        Map<String, Object> attributes = new HashMap<>();
         attributes.put("age", 25);
         attributes.put("name", "arshu");
 
