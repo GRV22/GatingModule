@@ -1,7 +1,9 @@
 package com.gating.testcases.functional.operators;
 
 import com.gating.validator.GatingValidator;
+import com.gating.validator.impl.GatingValidatorImpl;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -11,6 +13,13 @@ public class NoneOfTest {
 
     // Noneof test cases
 
+    private GatingValidator validator;
+
+    @BeforeClass
+    public void setUp() {
+        validator = new GatingValidatorImpl();
+    }
+
     @Test
     public void positiveEvaluteNoneOfTest() throws Exception {
         Map<String, Object> attributes = new HashMap<>();
@@ -19,7 +28,6 @@ public class NoneOfTest {
         String feature = "None Of User eligible if they visited these places Feature";
         String expression = "visitedLocations noneof gujrat,bangalore,indore";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -31,7 +39,6 @@ public class NoneOfTest {
         String feature = "None Of User eligible if they visited these places Feature";
         String expression = "visitedLocations noneof gujrat,bangalore,indore";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 

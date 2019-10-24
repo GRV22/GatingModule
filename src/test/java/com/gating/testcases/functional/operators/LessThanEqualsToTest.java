@@ -1,7 +1,9 @@
 package com.gating.testcases.functional.operators;
 
 import com.gating.validator.GatingValidator;
+import com.gating.validator.impl.GatingValidatorImpl;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -11,6 +13,12 @@ public class LessThanEqualsToTest {
 
     // LessThanEqualsTo
 
+    private GatingValidator validator;
+
+    @BeforeClass
+    public void setUp() {
+        validator = new GatingValidatorImpl();
+    }
 
     @Test
     public void positiveEvaluateLessThanEqualsToOperatorTest() throws Exception {
@@ -20,7 +28,6 @@ public class LessThanEqualsToTest {
         String feature = "Age Less than EqualsTo Feature";
         String expression = "age <= 25";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -32,7 +39,6 @@ public class LessThanEqualsToTest {
         String feature = "Age Less than EqualsTo Feature";
         String expression = "age <= 20";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 

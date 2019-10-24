@@ -1,7 +1,9 @@
 package com.gating.testcases.functional.operators;
 
 import com.gating.validator.GatingValidator;
+import com.gating.validator.impl.GatingValidatorImpl;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -10,6 +12,13 @@ import java.util.Map;
 public class AndOperatorTest {
 
     // And Test Cases
+
+    private GatingValidator validator;
+
+    @BeforeClass
+    public void setUp() {
+        validator = new GatingValidatorImpl();
+    }
 
     @Test
     public void positiveEvaluateAndOperatorTest() throws Exception {
@@ -20,7 +29,6 @@ public class AndOperatorTest {
         String feature = "Age and Name Feature";
         String expression = "age == 25 and name == arshu";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -33,7 +41,6 @@ public class AndOperatorTest {
         String feature = "Age and Name Feature";
         String expression = "age == 25 and name == arshu";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 

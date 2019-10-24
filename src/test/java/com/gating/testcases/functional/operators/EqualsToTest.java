@@ -1,13 +1,22 @@
 package com.gating.testcases.functional.operators;
 
 import com.gating.validator.GatingValidator;
+import com.gating.validator.impl.GatingValidatorImpl;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class EqualsToTest {
+
+    private GatingValidator validator;
+
+    @BeforeClass
+    public void setUp() {
+        validator = new GatingValidatorImpl();
+    }
 
     @Test
     public void positiveEvaluteEqualsToBoolean() throws Exception {
@@ -17,7 +26,6 @@ public class EqualsToTest {
         String feature = "Qualify Feature";
         String expression = "qualify == true";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -29,7 +37,6 @@ public class EqualsToTest {
         String feature = "Name Feature";
         String expression = "name == Ganesh";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -42,7 +49,6 @@ public class EqualsToTest {
         String feature = "Age Feature";
         String expression = "age == 25";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -54,7 +60,6 @@ public class EqualsToTest {
         String feature = "Qualify Feature";
         String expression = "qualify == true";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -66,7 +71,6 @@ public class EqualsToTest {
         String feature = "Name Feature";
         String expression = "name == ganesh";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -79,7 +83,6 @@ public class EqualsToTest {
         String feature = "Age Feature";
         String expression = "age == 25";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 

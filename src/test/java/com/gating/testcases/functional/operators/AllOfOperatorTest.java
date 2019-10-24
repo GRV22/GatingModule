@@ -1,7 +1,9 @@
 package com.gating.testcases.functional.operators;
 
 import com.gating.validator.GatingValidator;
+import com.gating.validator.impl.GatingValidatorImpl;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -12,6 +14,13 @@ public class AllOfOperatorTest {
 
     // Allof test cases
 
+    private GatingValidator validator;
+
+    @BeforeClass
+    public void setUp() {
+        validator = new GatingValidatorImpl();
+    }
+
     @Test
     public void positiveEvaluteAllOffTest() throws Exception {
         Map<String, Object> attributes = new HashMap<>();
@@ -20,7 +29,6 @@ public class AllOfOperatorTest {
         String feature = "All Of User eligible if they visited these places Feature";
         String expression = "visitedLocations allof delhi,gujrat,bangalore,indore,mumbai";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -32,7 +40,6 @@ public class AllOfOperatorTest {
         String feature = "All Of User eligible if they visited these places Feature";
         String expression = "visitedLocations allof delhi,gujrat,bangalore,indore";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -44,7 +51,6 @@ public class AllOfOperatorTest {
         String feature = "All Of User eligible if they visited these places Feature";
         String expression = "visitedLocations allof delhi,gujrat,bangalore,indore,mumbai";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -56,7 +62,6 @@ public class AllOfOperatorTest {
         String feature = "All Of User eligible if they visited these places Feature";
         String expression = "visitedLocations allof delhi,gujrat,bangalore,indore";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertFalse(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -68,7 +73,6 @@ public class AllOfOperatorTest {
         String feature = "All Of User eligible if they visited these places Feature";
         String expression = "visitedLocations allof delhi,gujrat,bangalore,indore,mumbai";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
@@ -80,7 +84,6 @@ public class AllOfOperatorTest {
         String feature = "All Of User eligible if they visited these places Feature";
         String expression = "visitedLocations allof delhi,gujrat,bangalore,indore,mumbai";
 
-        final GatingValidator validator = new GatingValidator();
         Assert.assertTrue(validator.isAllowed(expression, feature, attributes));
     }
 
