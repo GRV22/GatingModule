@@ -10,7 +10,6 @@ public class GreaterThanDoubleHandler extends AbstractGreaterThanTypeHandler<Dou
 
     @Override
     public boolean apply(Object val, String val1) {
-        markImpression();
         if (val instanceof Double) {
             return (Double) val > Double.parseDouble(val1);
         } else {

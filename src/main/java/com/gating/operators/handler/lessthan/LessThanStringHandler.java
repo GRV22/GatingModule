@@ -10,7 +10,6 @@ public class LessThanStringHandler extends AbstractLessThanTypeHandler<String> {
 
     @Override
     public boolean apply(Object val, String val1) {
-        markImpression();
         if (val instanceof String) {
             return ((String) val).compareTo(val1) < 0;
         } else {

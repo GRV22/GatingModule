@@ -7,10 +7,6 @@ import java.util.Collection;
 
 public abstract class AbstractAllOfTypeHandler<T> implements BinaryOperatorTypeHandler {
 
-    protected void markImpression() {
-        System.out.println("Visiting : " + this.getClass());
-    }
-
     protected boolean isNullOrEmpty(Object val) {
         return (null == val || (val instanceof Collection && CollectionUtils.isEmpty((Collection<?>) val)));
     }
@@ -19,10 +15,6 @@ public abstract class AbstractAllOfTypeHandler<T> implements BinaryOperatorTypeH
         if (null == next) {
             throw new UnsupportedOperationException();
         }
-    }
-
-    protected void showValue(Object val) {
-        System.out.println("val = [" + val + "]");
     }
 
 }

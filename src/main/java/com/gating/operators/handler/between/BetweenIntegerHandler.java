@@ -9,7 +9,6 @@ public class BetweenIntegerHandler extends AbstractBetweenTypeHandler<Integer> {
     private final TernaryOperatorTypeHandler next;
 
     public boolean apply(Object val, String first, String last) {
-        markImpression();
         if (val instanceof Integer) {
             return ((Integer) val >= Integer.valueOf(first)) && ((Integer) val <= Integer.valueOf(last));
         } else {

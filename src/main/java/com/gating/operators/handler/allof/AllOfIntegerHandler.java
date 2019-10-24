@@ -14,8 +14,6 @@ public class AllOfIntegerHandler extends AbstractAllOfTypeHandler<Integer> {
 
     @Override
     public boolean apply(Object val, String val1) {
-        markImpression();
-        showValue(val);
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof Integer) {

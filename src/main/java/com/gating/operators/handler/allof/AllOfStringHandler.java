@@ -13,7 +13,6 @@ public class AllOfStringHandler extends AbstractAllOfTypeHandler<String> {
     private final BinaryOperatorTypeHandler next;
 
     public boolean apply(Object val, String val1) {
-        markImpression();
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof String) {

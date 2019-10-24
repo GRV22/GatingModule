@@ -10,7 +10,6 @@ public class GreaterThanIntegerHandler extends AbstractGreaterThanTypeHandler<In
 
     @Override
     public boolean apply(Object val, String val1) {
-        markImpression();
         if (val instanceof Integer) {
             return (Integer) val > Integer.parseInt(val1);
         } else {

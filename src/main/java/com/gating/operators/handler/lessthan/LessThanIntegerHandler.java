@@ -10,7 +10,6 @@ public class LessThanIntegerHandler extends AbstractLessThanTypeHandler<Integer>
 
     @Override
     public boolean apply(Object val, String val1) {
-        markImpression();
         if (val instanceof Integer) {
             return (Integer) val < Integer.parseInt(val1);
         } else {

@@ -14,7 +14,6 @@ public class AllOfDoubleHandler extends AbstractAllOfTypeHandler<Double> {
 
     @Override
     public boolean apply(Object val, String val1) {
-        markImpression();
         if (isNullOrEmpty(val)) {
             return true;
         } else if (val instanceof Double) {
