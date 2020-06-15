@@ -23,7 +23,7 @@
     <properties>
         <lombok.version>1.18.8</lombok.version>
         <testng.version>7.0.0</testng.version>
-        <apache-collection.version>4.0</apache-collection.version>
+        <apache-collection.version>4.1</apache-collection.version>
     </properties>
 
     <dependencies>
